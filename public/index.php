@@ -10,16 +10,22 @@ if (isset($_POST['submit'])) {
 
     if (isset($_POST['number']) && !empty($_POST['number']) && isset($_POST['message']) && !empty($_POST['message'])) {
 
-        $client = new Client($config['account_sid'], $config['auth_token']);
-        $client->account->messages->create('+'.$_POST['number'], ['from' => $config['phone_number'], 'body' => $_POST['message']]);
-
-        //-- Register message details in DB
-        $blnQuery = $con->query("INSERT INTO messages(to_number,from_number,message) VALUES('" . $_POST['number'] . "','" . $config['phone_number'] . "','" . $_POST['message'] . "')");
-        if ($blnQuery) {
-            echo "<h3 class='text-center bg-success'>Message has been sent</h3>";
-        } else {
-            echo "<h3 class='text-center bg-danger'>Message has been NOT sent</h3>";
+        try {
+            $client = new Client($config['account_sid'], $config['auth_token']);
+            $client->account->messages->create('+' . $_POST['number'], ['from' => $config['phone_number'], 'body' => $_POST['message']]);
+            //-- Register message details in DB
+            $blnQuery = $con->query("INSERT INTO messages(to_number,from_number,message) VALUES('" . $_POST['number'] . "','" . $config['phone_number'] . "','" . $_POST['message'] . "')");
+            if ($blnQuery) {
+                echo "<h3 class='text-center bg-success'>Message has been sent</h3>";
+            } else {
+                echo "<h3 class='text-center bg-danger'>Message has been NOT sent</h3>";
+            }
         }
+            //catch exception
+        catch(Exception $e) {
+            echo 'Message: ' .$e->getMessage();
+        }
+
 
     } else {
         echo "<h3 class='text-center bg-danger'>Number and message fields can't be empty</h3>";
