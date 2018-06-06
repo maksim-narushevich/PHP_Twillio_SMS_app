@@ -36,8 +36,9 @@ Basic PHP Twillio application for sending emails to phone numbers and send/verif
     ```
     
   4. Register account on [Twilio](https://www.twilio.com) and set following details in `app/config.php` file
+  
      ```
-    'account_sid' => 'xxx',
+     'account_sid' => 'xxx',
     'auth_token' => 'xxx',
     'phone_number' => 'xxx',
     'code_number' => 'xxx'
