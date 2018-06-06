@@ -47,3 +47,12 @@ Basic PHP Twillio application for sending emails to phone numbers and send/verif
  #####  `phone_number` is number that is Authorized in Twillio from what SMS will be sent
    
  #####  `code_number` is number that is Authorized in Twillio to what SMS will be sent
+ 
+ 
+ ###### Example page of sending SMS to specific phone number
+
+![Mockup for feature A](https://raw.githubusercontent.com/Maksim1990/PHP_Twillio_SMS_app/master/public/images/sms1.PNG)
+
+###### Example page after code verification that was sent to authorized mobile phone
+
+![Mockup for feature A](https://raw.githubusercontent.com/Maksim1990/PHP_Twillio_SMS_app/master/public/images/sms2.PNG)
